@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 16px 32px;
+        }
+        main {
+            max-width: 960px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 32px;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .actions {
+            margin-top: 32px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        .btn.secondary {
+            background-color: #6c757d;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn.secondary:hover {
+            background-color: #545b62;
+        }
+        .info-box {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+        }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>My Dashboard</h2>
+    </header>
+    <main>
+        {%csrf_token%}
+        <h1>Hello,👋</h1>
+        <p>You’re signed in via OAuth. From here you can call protected APIs or display user data fetched from `/api/users/`.</p>
+
+        <div class="actions">
+            <a class="btn" href="/api/dashboard/">View Users API</a>
+            <a class="btn secondary" href="/o/logout/">Logout</a>
+        </div>
+
+        <div class="info-box">
+            <h3>Next steps</h3>
+            <p>Use JavaScript to fetch `/api/users/` with your session or OAuth token, then render the data here. Example curl:</p>
+            <pre>curl -H "Authorization: Bearer &lt;token&gt;" http://localhost:8000/api/users/</pre>
+        </div>
+    </main>
+</body>
+</html>
+

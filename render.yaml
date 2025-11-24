@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: drf-project
+    env: python
+    plan: free  # Change to 'starter' or 'standard' for production
+    buildCommand: pip install -r tutorial/requirements.txt
+    startCommand: gunicorn tutorial.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: RENDER
+        value: true
+      - key: BASE_URL
+        fromService:
+          type: web
+          name: drf-project
+          property: host
+    healthCheckPath: /api/docs/
+
+databases:
+  - name: drf-project-db
+    plan: free  # Change to 'starter' or 'standard' for production
+    databaseName: drf_project
+    user: drf_project_user
+
