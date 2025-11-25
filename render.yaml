@@ -4,7 +4,8 @@ services:
     env: python
     plan: free  # Change to 'starter' or 'standard' for production
     buildCommand: pip install -r tutorial/requirements.txt
-    startCommand: gunicorn tutorial:application
+    startCommand: gunicorn tutorial.wsgi:application --bind 0.0.0.0:$PORT --log-file -
+
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.8
